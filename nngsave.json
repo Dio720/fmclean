@@ -39,7 +39,8 @@
     },
     {
       "lean": "lemma add_comm (a b : mynat) : a + b = b + a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction b with k hk,\r\nrw add_zero a,\r\nrw zero_add a,\r\nrefl,\r\n\r\nrw add_succ a k,\r\nrw succ_add k a,\r\nrw hk,\r\nrefl,\r\n\r\n\r\n\r\n"
     },
     {
       "lean": "theorem succ_eq_add_one (n : mynat) : succ n = n + 1 :=\n",
