@@ -274,7 +274,8 @@
     },
     {
       "lean": "lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\nintro f,\r\nrepeat {rw not_iff_imp_false at h},\r\nby_cases p : P,\r\nby_cases q : Q,\r\nexact q,\r\nrw not_iff_imp_false at q,\r\nexfalso,\r\napply h,\r\nexact q,\r\nexact p,\r\nrw not_iff_imp_false at p,\r\nexfalso,\r\napply p,\r\nexact f,\r\n"
     },
     {
       "lean": "theorem succ_inj' {a b : mynat} (hs : succ(a) = succ(b)) :  a = b := \n",
