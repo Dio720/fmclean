@@ -298,7 +298,8 @@
     },
     {
       "lean": "theorem add_right_cancel (a t b : mynat) : a + t = b + t → a = b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\ninduction t with k hk,\r\nrepeat {rw add_zero at h},\r\nexact h,\r\napply hk,\r\n\r\nrepeat {rw add_succ at h},\r\napply succ_inj,\r\nexact h,\r\n"
     },
     {
       "lean": "theorem add_left_cancel (t a b : mynat) : t + a = t + b → a = b :=\n",
