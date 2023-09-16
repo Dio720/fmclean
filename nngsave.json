@@ -284,6 +284,7 @@
     },
     {
       "lean": "theorem succ_succ_inj {a b : mynat} (h : succ(succ(a)) = succ(succ(b))) :  a = b := \n",
+      "isSolved": true,
       "editorText": "apply succ_inj,\r\napply succ_inj,\r\nexact h,\r\n"
     },
     {
@@ -338,7 +339,8 @@
     },
     {
       "lean": "lemma ne_succ_self (n : mynat) : n ≠ succ n :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases n with k,\r\nexact zero_ne_succ 0,\r\nintro h,\r\nhave f := succ_inj(h),\r\nsymmetry at f,\r\nrw succ_eq_add_one k at f,\r\nhave g := eq_zero_of_add_right_eq_self(f),\r\nrw one_eq_succ_zero at g,\r\napply succ_ne_zero 0,\r\nexact g,\r\n\r\n"
     },
     {
       "lean": "theorem mul_pos (a b : mynat) : a ≠ 0 → b ≠ 0 → a * b ≠ 0 :=\n",
