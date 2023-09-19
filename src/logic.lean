@@ -11,19 +11,32 @@ variables P Q R : Prop
 theorem doubleneg_intro :
   P → ¬¬P  :=
 begin
-  sorry,
+  intro p,
+  intro h,
+  apply h,
+  exact p,
+
 end
 
 theorem doubleneg_elim :
   ¬¬P → P  :=
 begin
-  sorry,
+  intro v,
+  by_cases x : P,
+  exact x,
+  have boom : false := v x,
+  exfalso,
+  exact boom,
+  
 end
 
 theorem doubleneg_law :
   ¬¬P ↔ P  :=
 begin
-  sorry,
+  split,
+  exact doubleneg_elim P,
+  exact doubleneg_intro P,
+
 end
 
 ------------------------------------------------
@@ -33,13 +46,24 @@ end
 theorem disj_comm :
   (P ∨ Q) → (Q ∨ P)  :=
 begin
-  sorry,
+  intro h,
+  cases h with hp hq,
+  right,
+  exact hp,
+  left,
+  exact hq,
+  
 end
 
 theorem conj_comm :
   (P ∧ Q) → (Q ∧ P)  :=
 begin
-  sorry,
+  intro h,
+  cases h with hp hq,
+  split,
+  exact hq,
+  exact hp,
+
 end
 
 
@@ -50,13 +74,22 @@ end
 theorem impl_as_disj_converse :
   (¬P ∨ Q) → (P → Q)  :=
 begin
-  sorry,
+  intros h p,
+  cases h with h¬p hq,
+  exfalso,
+  exact h(p),
+  exact h,
+
 end
 
 theorem disj_as_impl :
   (P ∨ Q) → (¬P → Q)  :=
 begin
-  sorry,
+  intros hpq h¬p,
+  cases hpq with hp hq,
+  contradiction,
+  exact hq,
+
 end
 
 
@@ -67,19 +100,30 @@ end
 theorem impl_as_contrapositive :
   (P → Q) → (¬Q → ¬P)  :=
 begin
-  sorry,
+  intros hpq hNq,
+  intro p,
+  apply hNq,
+  exact hpq(p),
+
 end
 
 theorem impl_as_contrapositive_converse :
   (¬Q → ¬P) → (P → Q)  :=
 begin
-  sorry,
+  intros hqp p,
+  by_contra hboom,
+  have hf := hqp(hboom),
+  exact hf(p),
+
 end
 
 theorem contrapositive_law :
   (P → Q) ↔ (¬Q → ¬P)  :=
 begin
-  sorry,
+  split,
+  exact impl_as_contrapositive P Q,
+  exact impl_as_contrapositive_converse P Q,
+
 end
 
 
@@ -90,7 +134,14 @@ end
 theorem lem_irrefutable :
   ¬¬(P∨¬P)  :=
 begin
-  sorry,
+  intro hp,
+  apply hp,
+  right,
+  intro p,
+  apply hp,
+  left,
+  exact p,
+
 end
 
 
@@ -101,7 +152,15 @@ end
 theorem peirce_law_weak :
   ((P → Q) → P) → ¬¬P  :=
 begin
-  sorry,
+  intro hpqp,
+  intro hp,
+  apply hp,
+  apply hpqp,
+  intro p,
+  exfalso,
+  apply hp,
+  exact p,
+
 end
 
 
@@ -112,13 +171,28 @@ end
 theorem disj_as_negconj :
   P∨Q → ¬(¬P∧¬Q)  :=
 begin
-  sorry,
+  intro hpq,
+  intro hNpNq,
+  cases hNpNq with hNp hNq,
+  cases hpq with hp hq,
+  apply hNp,
+  exact hp,
+  apply hNq,
+  exact hq,
+
 end
 
 theorem conj_as_negdisj :
   P∧Q → ¬(¬P∨¬Q)  :=
 begin
-  sorry,
+  intro hpq,
+  intro hNpNq,
+  cases hNpNq with hNp hNq,
+  apply hNp,
+  exact hpq.1,
+  apply hNq,
+  exact hpq.2,
+
 end
 
 
@@ -129,7 +203,17 @@ end
 theorem demorgan_disj :
   ¬(P∨Q) → (¬P ∧ ¬Q)  :=
 begin
-  sorry,
+  intro hNpq,
+  split,
+  intro p,
+  apply hNpq,
+  left,
+  exact p,
+  intro q,
+  apply hNpq,
+  right,
+  exact q,
+  
 end
 
 theorem demorgan_disj_converse :
