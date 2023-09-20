@@ -389,18 +389,15 @@
     },
     {
       "lean": "theorem le_antisymm (a b : mynat) (hab : a ≤ b) (hba : b ≤ a) : a = b :=\n",
-      "isSolved": true,
-      "editorText": "cases hab with k h1,\ncases hba with m h2,\nrw h1 at h2,\nrw add_assoc at h2,\nsymmetry at h2,\nhave h3 := eq_zero_of_add_right_eq_self h2,\nhave h4 := add_right_eq_zero h3,\nrw h1,\nrw h4,\nrwa add_zero a,\n"
+      "editorText": "sorry"
     },
     {
       "lean": "lemma le_zero (a : mynat) (h : a ≤ 0) : a = 0 :=\n",
-      "isSolved": true,
-      "editorText": "cases h with k h1,\nsymmetry at h1,\nhave h2 := add_right_eq_zero h1,\nexact h2,\n"
+      "editorText": "sorry"
     },
     {
       "lean": "lemma succ_le_succ (a b : mynat) (h : a ≤ b) : succ a ≤ succ b :=\n",
-      "isSolved": true,
-      "editorText": "cases h with k h1,\nrw h1,\nuse k,\nrw succ_add a k,\nrefl,\n"
+      "editorText": "sorry"
     },
     {
       "lean": "theorem le_total (a b : mynat) : a ≤ b ∨ b ≤ a :=\n",
