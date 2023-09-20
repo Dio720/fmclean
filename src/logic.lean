@@ -219,13 +219,26 @@ end
 theorem demorgan_disj_converse :
   (¬P ∧ ¬Q) → ¬(P∨Q)  :=
 begin
-  sorry,
+  intro h,
+  cases h with hp hq,
+  intro hpq,
+  apply hp,
+  cases hpq,
+  exact hpq,
+  contradiction,
+
 end
 
 theorem demorgan_conj :
   ¬(P∧Q) → (¬Q ∨ ¬P)  :=
 begin
-  sorry,
+  intro h,
+  right,
+  intro p,
+  apply h,
+  split,
+  exact p,
+  
 end
 
 theorem demorgan_conj_converse :
