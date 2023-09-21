@@ -434,7 +434,8 @@
     },
     {
       "lean": "lemma lt_aux_one (a b : mynat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\ncases h with h1 h2,\ncases h1 with k h3,\ncases k with m h4,\nrw add_zero a at h3,\nexfalso,\napply h2,\nuse 0,\nrw add_zero b,\nsymmetry,\nexact h3,\nrw add_succ a m at h3,\nuse m,\nrw succ_add a m,\nexact h3,\n"
     },
     {
       "lean": "lemma lt_aux_two (a b : mynat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) :=\n",
