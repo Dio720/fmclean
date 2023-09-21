@@ -284,25 +284,76 @@ end
 theorem distr_conj_disj :
   P∧(Q∨R) → (P∧Q)∨(P∧R)  :=
 begin
-  sorry,
+  intro h,
+  cases h with p qr,
+  cases qr with q r,
+  left,
+  split,
+  exact p,
+  exact q,
+  right,
+  split,
+  exact p,
+  exact r,
+
 end
 
 theorem distr_conj_disj_converse :
   (P∧Q)∨(P∧R) → P∧(Q∨R)  :=
 begin
-  sorry,
+  intro h,
+  cases h with h1 h2,
+  cases h1 with p q,
+  split,
+  exact p,
+  left,
+  exact q,
+  cases h2 with p r,
+  split,
+  exact p,
+  right,
+  exact r,
+
 end
 
 theorem distr_disj_conj :
   P∨(Q∧R) → (P∨Q)∧(P∨R)  :=
 begin
-  sorry,
+  intro h,
+  cases h with h1 h2,
+  split,
+  left,
+  exact h1,
+  left,
+  exact h1,
+  cases h2 with q r,
+  split,
+  right,
+  exact q,
+  right,
+  exact r,
+
 end
 
 theorem distr_disj_conj_converse :
   (P∨Q)∧(P∨R) → P∨(Q∧R)  :=
 begin
-  sorry,
+  intro h,
+  cases h with pq pr,
+  cases pq with p q,
+  cases pr with p r,
+  left,
+  exact p,
+  left,
+  exact p,
+  cases pr with p r,
+  left,
+  exact p,
+  right,
+  split,
+  exact q,
+  exact r,
+  
 end
 
 
