@@ -462,7 +462,7 @@ begin
   intro p,
   left,
   exact p,
-  
+
 end
 
 end propositional
@@ -484,37 +484,79 @@ variables P Q : U -> Prop
 theorem demorgan_exists :
   ¬(∃x, P x) → (∀x, ¬P x)  :=
 begin
-  sorry,
+  intro h,
+  intro x,
+  intro f,
+  apply h,
+  existsi x,
+  exact f,
+
 end
 
 theorem demorgan_exists_converse :
   (∀x, ¬P x) → ¬(∃x, P x)  :=
 begin
-  sorry,
+  intro h,
+  intro h1,
+  cases h1 with x hx,
+  apply h(x),
+  exact hx,
+
 end
 
 theorem demorgan_forall :
   ¬(∀x, P x) → (∃x, ¬P x)  :=
 begin
-  sorry,
+  intro h,
+  by_contra hc,
+  apply  h,
+  intro x,
+  by_contra hc1,
+  apply hc,
+  existsi x,
+  exact hc1,
+  
 end
 
 theorem demorgan_forall_converse :
   (∃x, ¬P x) → ¬(∀x, P x)  :=
 begin
-  sorry,
+  intro h,
+  intro h1,
+  cases h with x hx,
+  apply hx,
+  have h3 := h1(x),
+  exact h3,
+
 end
 
 theorem demorgan_forall_law :
   ¬(∀x, P x) ↔ (∃x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  exact demorgan_forall U P,
+  exact demorgan_forall_converse U P,
+
 end
 
 theorem demorgan_exists_law :
   ¬(∃x, P x) ↔ (∀x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  intro h,
+  intro x,
+  intro px,
+  apply h,
+  existsi x,
+  exact px,
+  intro h,
+  intro h1,
+  cases h1 with x hx,
+  have h1x := h(x),
+  apply h1x,
+  exact hx,
+  
+
 end
 
 
