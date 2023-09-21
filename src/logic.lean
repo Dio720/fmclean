@@ -555,7 +555,7 @@ begin
   have h1x := h(x),
   apply h1x,
   exact hx,
-  
+
 
 end
 
@@ -567,37 +567,68 @@ end
 theorem exists_as_neg_forall :
   (∃x, P x) → ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  intro h,
+  cases h with x hx,
+  intro f,
+  have f1 := f(x),
+  contradiction,
+  
 end
 
 theorem forall_as_neg_exists :
   (∀x, P x) → ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+
+  intro h,
+  intro h1,
+  cases h1 with x hx,
+  apply hx,
+  exact h(x),
+
 end
 
 theorem forall_as_neg_exists_converse :
   ¬(∃x, ¬P x) → (∀x, P x)  :=
 begin
-  sorry,
+  intro h,
+  intro x,
+  by_contra hc,
+  apply h,
+  existsi x,
+  exact hc,
+
 end
 
 theorem exists_as_neg_forall_converse :
   ¬(∀x, ¬P x) → (∃x, P x)  :=
 begin
-  sorry,
+  intro h,
+  by_contra hc,
+  apply h,
+  intro x,
+  intro px,
+  apply hc,
+  existsi x,
+  exact px,
+
 end
 
 theorem forall_as_neg_exists_law :
   (∀x, P x) ↔ ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  exact forall_as_neg_exists U P,
+  exact forall_as_neg_exists_converse U P,
+
 end
 
 theorem exists_as_neg_forall_law :
   (∃x, P x) ↔ ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  exact exists_as_neg_forall U P,
+  exact exists_as_neg_forall_converse U P,
+  
 end
 
 
