@@ -353,7 +353,7 @@ begin
   split,
   exact q,
   exact r,
-  
+
 end
 
 
@@ -364,13 +364,25 @@ end
 theorem curry_prop :
   ((P∧Q)→R) → (P→(Q→R))  :=
 begin
-  sorry,
+  intro h,
+  intros p q,
+  apply h,
+  split,
+  exact p,
+  exact q,
+
 end
 
 theorem uncurry_prop :
   (P→(Q→R)) → ((P∧Q)→R)  :=
 begin
-  sorry,
+  intro h,
+  intro f,
+  cases f with p q,
+  apply h,
+  exact p,
+  exact q,
+  
 end
 
 
